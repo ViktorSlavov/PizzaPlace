@@ -9,6 +9,7 @@
 /node_modules
 
 # profiling files
+/src/environments/firebase.ts
 chrome-profiler-events.json
 speed-measure-plugin.json
 

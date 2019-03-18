@@ -1,10 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { routes } from './app-routing.module';
-
-import { IgxNavigationDrawerComponent } from 'igniteui-angular';
+import { IgxIconService } from 'igniteui-angular';
 
 
 @Component({
@@ -13,32 +11,25 @@ import { IgxNavigationDrawerComponent } from 'igniteui-angular';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  public appName = 'PIZZA PLACE';
   public topNavLinks: Array<{
     path: string,
     name: string
   }> = [];
-  @ViewChild(IgxNavigationDrawerComponent) public navdrawer: IgxNavigationDrawerComponent;
 
-  constructor(private router: Router) {
-    for (const route of routes) {
-      if (route.path && route.data && route.path.indexOf('*') === -1) {
-        this.topNavLinks.push({
-          name: route.data.text,
-          path: '/' + route.path
-        });
-      }
-    }
+  constructor(private router: Router, private iconService: IgxIconService) {
   }
 
   public ngOnInit(): void {
-    this.router.events.pipe(
-      filter((x) => x instanceof NavigationStart)
-    )
-      .subscribe((event: NavigationStart) => {
-          if (event.url !== '/' && !this.navdrawer.pin) {
-              // Close drawer when selecting a view on mobile (unpinned)
-              this.navdrawer.close();
-          }
-      });
+    this.iconService.addSvgIcon('home-pizza', '/assets/pizza-slice.svg', 'custom-icon');
+    this.iconService.addSvgIcon('SPICY', '/assets/hot.svg', 'spec-icon');
+    this.iconService.addSvgIcon('DAIRY', '/assets/milk.svg', 'spec-icon');
+    this.iconService.addSvgIcon('NUTS', '/assets/nut.svg', 'spec-icon');
+    this.iconService.addSvgIcon('VEGAN', '/assets/vegan.svg', 'spec-icon');
+  }
+
+  goHome() {
+    this.router.navigateByUrl('/home');
   }
 }

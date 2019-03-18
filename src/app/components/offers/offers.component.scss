@@ -1,0 +1,30 @@
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carousel-container {
+  height: 100%;
+  width: 80%;
+
+  igx-carousel {
+    height: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .carousel-container {
+    width: 100%;
+  }
+}
+
+.content {
+  height: 100%;
+  background-position: center;
+  background-size: 100%;
+}
+
+igx-slide {
+  height: 100%;
+}
+

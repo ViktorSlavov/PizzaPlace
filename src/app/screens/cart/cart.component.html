@@ -1,0 +1,28 @@
+<div class="cart__text-block">
+  <h4>
+    <ng-container *ngIf="order?.items.length; else emptyCart">
+      You have {{ order?.items.length }} items in your cart.
+    </ng-container>
+    <ng-template #emptyCart>
+      Looks like your cart is empty. Why not add some <a routerLink="/menu">delicious pizza</a>?
+    </ng-template>
+  </h4>
+
+</div>
+<div class="cart__items">
+  <app-cart-item *ngFor="let item of order?.items" [item]="item.product" [quantity]="item.quantity"
+    (quantityChange)="orderChange($event, item.product)"></app-cart-item>
+</div>
+<div *ngIf="order?.items.length" class="cart__text-block">
+  <h5>
+    Continue to checkout
+  </h5>
+  <div class="">
+    <span>
+      Total Price:
+    </span>
+    <span>
+      {{ order.orderPrice }}
+    </span>
+  </div>
+</div>

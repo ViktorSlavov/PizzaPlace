@@ -1,0 +1,34 @@
+<div class="cart-item">
+  <igx-card *ngIf="product">
+    <igx-card-header class="cart-item__header">
+      <div class="cart-item__title">
+        <igx-avatar src="{{product.image | imagePipe }}" roundShape="true"></igx-avatar>
+        <div class="igx-card-header__tgroup">
+          <h3 class="igx-card-header__title--small">{{ product.name }} - BGN {{ product.price }}</h3>
+          <h5 class="igx-card-header__subtitle">{{ product.type?.toUpperCase() }}</h5>
+          <h5 class="igx-card-header__subitle">BGN {{ product.price * quantity }}</h5>
+        </div>
+      </div>
+      <div class="cart-item__quantity">
+        <igx-input-group class="cart-item__quantity-input">
+          <igx-prefix>
+            <button igxButton="icon" class="cart__icon--delete" [attr.aria-label]="'Remove all ' + product.name + ' from cart'" (click)="remove()">
+              <igx-icon>clear</igx-icon>
+            </button>
+          </igx-prefix>
+          <input igxInput min="0" max="{{maxItems}}" [(ngModel)]="quantity" type="number">
+          <igx-suffix>
+            <button igxButton="icon" class="cart__icon--remove" [attr.aria-label]="'Remove 1 ' + product.name + ' from cart'" (click)="subtract()">
+              <igx-icon>remove_circle</igx-icon>
+            </button>
+          </igx-suffix>
+          <igx-suffix>
+            <button igxButton="icon" class="cart__icon--add" [attr.aria-label]="'Add 1 ' + product.name + ' to cart'" (click)="add()">
+              <igx-icon>add_circle</igx-icon>
+            </button>
+          </igx-suffix>
+        </igx-input-group>
+      </div>
+    </igx-card-header>
+  </igx-card>
+</div>

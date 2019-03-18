@@ -1,0 +1,7 @@
+<div class="carousel-container">
+  <igx-carousel [interval]="interval" [pause]="pause" [loop]="loop">
+    <igx-slide *ngFor="let slide of slides;" [active]="slide.active">
+      <div class="content" [style.backgroundImage]="getStyle(slide.image)"></div>
+    </igx-slide>
+  </igx-carousel>
+</div>

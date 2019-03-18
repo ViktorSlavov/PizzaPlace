@@ -1,16 +1,25 @@
-<div igxLayout>
-  <igx-nav-drawer #nav id="project-menu" isOpen="true" [enableGestures]='true' width="280px">
-    <ng-template igxDrawer>
-      <span igxDrawerItem [isHeader]="true">Views</span>
-      <span *ngFor="let route of topNavLinks" igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" routerLink="{{route.path}}">{{route.name}}</span>
-    </ng-template>
-  </igx-nav-drawer>
-  <div class="main" igxFlex igxLayout igxLayoutDir="columns">
-    <igx-navbar title="pizza-place" actionButtonIcon="menu" (onAction)="nav.toggle()">
-      <app-login-bar></app-login-bar>
+<div class="content__background">
+  <div class="content__blocker">
+  </div>
+</div>
+<div class="app">
+  <igx-navbar [title]="appName">
+    <igx-action-icon>
+      <igx-icon (click)="goHome()" name="home-pizza" fontSet="custom-icon"></igx-icon>
+    </igx-action-icon>
+    <button igxButton routerLink="/menu">
+      <igx-icon>restaurant_menu</igx-icon>
+      &nbsp;menu
+    </button>
+    
+    <button igxButton routerLink="/cart">
+      <igx-icon>shopping_basket</igx-icon>
+      &nbsp;cart
+    </button>
+    
+    <app-login-bar profileLink></app-login-bar>
   </igx-navbar>
-    <div class="content" igxFlex>
-      <router-outlet></router-outlet>
-    </div>
+  <div class="content" igxFlex>
+    <router-outlet></router-outlet>
   </div>
 </div>

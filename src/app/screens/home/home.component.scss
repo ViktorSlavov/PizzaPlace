@@ -1,0 +1,57 @@
+@import '../../../shared.scss';
+
+.links {
+  display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    padding-top: 64px;
+
+  .links__link {
+    height: 100%;
+    box-sizing: content-box;
+
+    .igx-avatar {
+      border: 2px solid transparent;
+      box-sizing: content-box;
+    }
+
+    :hover {
+      color: $accent-secondary-medium;
+
+      .igx-avatar {
+        border: 2px solid $accent-secondary-medium;
+        box-sizing: content-box;
+      }
+    }
+  }
+}
+
+.card__content {
+  height: 240px;
+  width: 360px;
+  cursor: pointer;
+  line-height: 80px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  text-shadow: 0px 0px;
+  text-transform: uppercase;
+  color: $gouda-yellow;
+
+  .igx-avatar {
+    border: none;
+  }
+  
+}
+
+:host {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+app-offers {
+  height: 50%;
+}

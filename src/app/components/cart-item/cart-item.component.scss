@@ -1,0 +1,24 @@
+@import "../../../shared.scss";
+
+.cart-item {
+    padding: 8px; 
+
+    .cart-item__header {
+        justify-content: space-between;
+    }
+    .cart-item__title {
+        display: flex;
+    }
+    .cart-item__quantity {
+        width: 40%;
+        display: flex;
+    }
+
+    .cart-item__quantity-input {
+        width: 200px;
+    }
+
+    .igx-card-header__subtitle {
+        color: $gouda-yellow;
+    }
+}

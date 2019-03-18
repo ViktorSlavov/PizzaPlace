@@ -4,19 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
-  IgxLayoutModule, IgxRippleModule,
-  IgxNavigationDrawerModule, IgxNavbarModule
+  IgxNavbarModule, IgxToggleModule,
+  IgxAvatarModule, IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxIconService, IgxCardModule
 } from 'igniteui-angular';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule, ExternalAuthService } from './authentication';
+import { CommonModule } from '@angular/common';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
   ],
   imports: [
     FormsModule,
@@ -24,17 +26,24 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
     BrowserAnimationsModule,
     // NOTE: `AuthenticationModule` defines child routes, must be imported before root `AppRoutingModule`
     AuthenticationModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     AppRoutingModule,
-    IgxNavigationDrawerModule,
     IgxNavbarModule,
-    IgxLayoutModule,
-    IgxRippleModule
+    CommonModule,
+    IgxIconModule,
+    IgxToggleModule,
+    IgxAvatarModule,
+    IgxInputGroupModule,
+    IgxButtonModule,
+    IgxCardModule
   ],
-  providers: [ ],
+  providers: [IgxIconService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
+  public appName = 'PIZZA PLACE';
   constructor(private externalAuthService: ExternalAuthService) {
     /**
      * To register a social login, un-comment one or more of the following and add your service provider Client ID.
@@ -46,5 +55,4 @@ export class AppModule {
 
     // this.externalAuthService.addFacebook('<CLIENT_ID>');
   }
-
 }

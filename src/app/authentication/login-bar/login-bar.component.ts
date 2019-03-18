@@ -28,16 +28,4 @@ export class LoginBarComponent {
     this.userService.clearCurrentUser();
     this.authService.logout();
   }
-
-  menuSelect(args: ISelectionEventArgs) {
-    // TODO: Use item value, swap to menu component in the future
-    switch (args.newSelection.index) {
-      case 0:
-        this.router.navigate(['/profile']);
-        break;
-      case 1:
-        this.handleLogout();
-        break;
-    }
-  }
 }

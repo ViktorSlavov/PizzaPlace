@@ -1,0 +1,31 @@
+<div class="menu__filter">
+  <div class="menu__filter-search">
+    <igx-input-group type="search">
+      <label igxLabel>Filter by name</label>
+      <input igxInput (ngModelChange)="triggerCheck()" [(ngModel)]="searchValue">
+      <igx-suffix>
+        <igx-icon>search</igx-icon>
+      </igx-suffix>
+    </igx-input-group>
+  </div>
+  <div class="menu__filter-wrapper">
+    <div class="menu__filter-category">
+      <h5>Type</h5>
+      <igx-checkbox *ngFor="let type of types" (ngModelChange)="triggerCheck()" [(ngModel)]="typeFilter[type]">
+        {{ type }}</igx-checkbox>
+    </div>
+    <div class="menu__filter-category">
+      <h5>Groups</h5>
+      <igx-checkbox *ngFor="let specific of specifics" (ngModelChange)="triggerCheck()"
+        [(ngModel)]="specificFilter[specific]">
+        {{ specificsImages[specific] }}
+      </igx-checkbox>
+    </div>
+  </div>
+</div>
+<div class="menu__collection">
+  <app-menu-item [@scaleIn]="true" *ngFor="let product of products | async
+  |textFilter:searchValue:pipeTrigger
+  |categoryFilter:specificFilter:pipeTrigger
+  |typeFilter:typeFilter:pipeTrigger" [product]="product" (addition)="addToCart(product)"></app-menu-item>
+</div>

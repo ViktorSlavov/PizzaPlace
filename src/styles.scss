@@ -1,8 +1,64 @@
+// CSS Reset, comment out if not required or using a different module
+@import '~minireset.css/minireset';
 /* You can add global styles to this file, and also import other style files */
+// Import the IgniteUI themes library first
+
+@import './shared.scss';
 
 html, body {
   height: 100%;
 }
+
 .content p {
   margin: 15px;
+}
+
+
+$nav-bar-theme: igx-navbar-theme($text-color: $gouda-yellow,
+$idle-icon-color: $gouda-yellow,
+$hover-icon-color: $accent-secondary-light);
+
+$icon-theme: igx-icon-theme($palette: $my-color-palette, $color: $gouda-yellow);
+
+$elevations-color: igx-elevations($accent-secondary-light, $accent-secondary-medium, $accent-secondary-strong);
+$custom-shadow: igx-elevation($elevations-color, 10);
+$menu-card-theme: igx-card-theme($background: $hot-sauce, 
+  $header-text-color: #fff,
+  $content-text-color: $gouda-yellow,
+  $actions-text-color: $gouda-yellow,
+  $subtitle-text-color: $gouda-yellow);
+
+$checkbox-theme: igx-checkbox-theme($label-color: $secondary-color,
+$empty-color: $accent-primary-light,
+$fill-color: $accent-secondary-medium,
+$tick-color: $primary-color,
+$disabled-color: igx-color($my-color-palette, 'grays', 400));
+
+@include igx-navbar($nav-bar-theme);
+@include igx-icon($icon-theme);
+@include igx-card($menu-card-theme);
+@include igx-checkbox($checkbox-theme);
+
+
+
+@font-face {
+  font-family: pizzaFont;
+  src: url(./assets/fonts/fatfingr.ttf);
+}
+
+@include igx-typography(
+  $font-family: "pizzaFont, sans-serif"
+);
+
+.product__wrapper {
+  background-size: contain;
+}
+
+.links__link {
+  @include igx-card(igx-card-theme($background: $hot-sauce, 
+  $header-text-color: #fff,
+  $content-text-color: $gouda-yellow,
+  $actions-text-color: $gouda-yellow,
+  $subtitle-text-color: $gouda-yellow,
+  $hover-shadow: $custom-shadow));
 }

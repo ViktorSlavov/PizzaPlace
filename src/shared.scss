@@ -1,0 +1,36 @@
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+
+$secondary-color: #f7c789;
+$primary-color: #a83825;
+
+$my-color-palette: igx-palette(
+    $primary: $primary-color,
+    $secondary: $secondary-color
+);
+
+// IMPORTANT: Make sure you always include igx-core first!
+@include igx-core();
+// Pass the color palette we generated to the igx-theme mixin
+@include igx-theme($my-color-palette);
+
+$bread-beige: #efdeb8;
+$ketchup-red: igx-color($my-color-palette, 'primary', 800);
+$accent-secondary-strong: igx-color($my-color-palette, 'secondary', 'A700');
+$accent-secondary-medium: igx-color($my-color-palette, 'secondary', 'A400');
+$accent-secondary-light: igx-color($my-color-palette, 'secondary', 'A200');
+$accent-primary-strong: igx-color($my-color-palette, 'primary', 'A700');
+$accent-primary-medium: igx-color($my-color-palette, 'primary', 'A400');
+$accent-primary-light: igx-color($my-color-palette, 'primary', 'A200');
+$background-primary: igx-color($my-color-palette, 'primary', 400);
+$background-secondary: igx-color($my-color-palette, 'secondary', 400);
+$hot-sauce: #a83825;
+$gouda-yellow: #ffa600;
+$mustard-yellow: #f0ed52;
+$emental-yellow: #f5d365;
+$veggie-green: #46af1d;
+$pickle-green: #307921;
+$milk-white:#F6F5F1;
+$peanut-brown:#cd9141;
+$elevation-shadow-12: igx-elevation($elevations, 12);
+$elevation-shadow-8: igx-elevation($elevations, 10);

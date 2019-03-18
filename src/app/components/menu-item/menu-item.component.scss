@@ -1,0 +1,36 @@
+@import '../../../shared.scss';
+
+:host {
+    display: block;
+    margin: 16px;
+    width: 360px;
+    height: 360px;
+}
+
+.product__image-wrapper {
+    overflow: hidden;
+    height: 220px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.product__order {
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.product__price {
+    color: $secondary-color;
+    font-size: 1.6rem;
+    cursor: auto;
+    :hover, :active {
+        background: auto;
+    }
+}
