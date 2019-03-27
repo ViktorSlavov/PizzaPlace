@@ -2,7 +2,7 @@
 
 
 $secondary-color: #f7c789;
-$primary-color: #a83825;
+$primary-color: #e02f03;
 
 $my-color-palette: igx-palette(
     $primary: $primary-color,
@@ -24,7 +24,7 @@ $accent-primary-medium: igx-color($my-color-palette, 'primary', 'A400');
 $accent-primary-light: igx-color($my-color-palette, 'primary', 'A200');
 $background-primary: igx-color($my-color-palette, 'primary', 400);
 $background-secondary: igx-color($my-color-palette, 'secondary', 400);
-$hot-sauce: #a83825;
+$hot-sauce: $primary-color;
 $gouda-yellow: #ffa600;
 $mustard-yellow: #f0ed52;
 $emental-yellow: #f5d365;
