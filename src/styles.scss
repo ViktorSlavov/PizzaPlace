@@ -65,6 +65,10 @@ $font-family: "'Lalezar', cursive",
   background-size: contain;
 }
 
+.text--yellow {
+  color: $gouda-yellow;
+}
+
 .links__link {
   @include igx-card(igx-card-theme($background: $hot-sauce, 
   $header-text-color: #fff,

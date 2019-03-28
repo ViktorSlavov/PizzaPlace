@@ -1,3 +1,16 @@
 <igx-card>
-  <
+  <igx-card-header>
+    <h5>
+      <igx-avatar roundShape="true">
+        <igx-icon>
+          how_to_reg
+        </igx-icon>
+      </igx-avatar>
+      Profile
+    </h5>
+  </igx-card-header>
+  <igx-card-content>
+      <form class="input-group-form" [formGroup]="user" (ngSubmit)="onSubmit()">
+      </form>
+  </igx-card-content>
 </igx-card>

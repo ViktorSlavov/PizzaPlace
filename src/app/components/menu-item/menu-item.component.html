@@ -1,5 +1,10 @@
 <igx-card>
   <div *ngIf="product" class="product__image-wrapper" [routerLink]="['product', product.name]">
+    <div *ngIf="product.specifics?.length" class="product__specifics">
+      <div *ngFor="let specific of product.specifics" class="specific">
+        {{ imageMap[specific] }}
+      </div>
+    </div>
     <img width="100%" [src]="product?.image | imagePipe">
   </div>
   <igx-card-header>

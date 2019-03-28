@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
-import { Product } from 'src/app/common/interfaces';
+import { Product, PRODUCT_SPECIFICS_IMAGES } from 'src/app/common/interfaces';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { takeUntil } from 'rxjs/operators';
@@ -16,6 +16,7 @@ export class MenuItemComponent implements OnInit, AfterViewInit {
 
   @Input()
   public product: Product;
+  public imageMap = PRODUCT_SPECIFICS_IMAGES;
   destroy$: Subject<any> = new Subject();
 
   public getUrl(relativeUrl: string) {

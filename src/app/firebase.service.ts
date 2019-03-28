@@ -23,9 +23,10 @@ export class FirebaseDataService {
     return this.database;
   }
 
-  public getCollection<T>(name: string, queryColleciton?: (ref: any) => Query) {
+  public getCollection<T>(name: string,
+    queryColleciton?: (ref: firebase.firestore.CollectionReference) => Query): AngularFirestoreCollection<T> {
     return this.collections[name] =
-    this.database.collection(`/${name}` as any, queryColleciton ? queryColleciton : undefined) as AngularFirestoreCollection<T>;
+    this.database.collection<T>(`/${name}`, queryColleciton ? queryColleciton : undefined);
   }
 
   public writeValues(collection: string, name: string, values: any): void {

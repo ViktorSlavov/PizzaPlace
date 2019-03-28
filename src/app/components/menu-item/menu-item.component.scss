@@ -8,6 +8,7 @@
 }
 
 .product__image-wrapper {
+    position: relative;
     overflow: hidden;
     height: 220px;
     width: 100%;
@@ -33,4 +34,28 @@
     :hover, :active {
         background: auto;
     }
+}
+
+.product__specifics {
+    position: absolute;
+    max-width: 104px;
+    display: flex;
+    flex-flow: row;
+    align-items: flex-end;
+    justify-self: start;
+    align-self: flex-end;
+    margin-top: -100px;
+}
+
+.specific {
+    width: 48px;
+    height: 48px;
+    background-color: #eeeeeeff;
+    border-radius: 2px;
+    margin: 0px 8px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
 }
