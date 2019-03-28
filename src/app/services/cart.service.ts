@@ -21,7 +21,7 @@ export class CartService {
   constructor(protected firestore: FirebaseDataService, protected userService: UserService, protected productService: ProductsService) {
     this.currentUser = this.userService.currentUser;
     this.collection = this.firestore.getCollection<Order>('orders',
-    ref => ref.where('active', '==', true).where('user', '==', this.currentUser.token));
+    ref => ref.where('active', '==', true).where('user', '==', this.currentUser ? this.currentUser.token : null));
     this.collection.valueChanges().subscribe((data: Order[]) => {
       this.items$.next(data[0]);
       this.orderCache = data[0];

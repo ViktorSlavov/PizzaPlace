@@ -4,9 +4,10 @@
       <div class="cart-item__title">
         <igx-avatar src="{{product.image | imagePipe }}" roundShape="true"></igx-avatar>
         <div class="igx-card-header__tgroup">
-          <h3 class="igx-card-header__title--small">{{ product.name }} - BGN {{ product.price }}</h3>
-          <h5 class="igx-card-header__subtitle">{{ product.type?.toUpperCase() }}</h5>
-          <h5 class="igx-card-header__subitle">BGN {{ product.price * quantity }}</h5>
+          <h3 class="cart-item__title">{{ product.name }}</h3>
+          <h3 class="cart-item__title">BGN {{ product.price }} per unit</h3>
+          <h5 class="cart-item__subtitle">{{ product.type?.toUpperCase() }}</h5>
+          <h5 class="cart-item__subitle">BGN {{ product.price * quantity }}</h5>
         </div>
       </div>
       <div class="cart-item__quantity">

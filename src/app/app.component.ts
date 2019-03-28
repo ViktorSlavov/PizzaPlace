@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { routes } from './app-routing.module';
 import { IgxIconService } from 'igniteui-angular';
+import { CartService } from './services/cart.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
     name: string
   }> = [];
 
-  constructor(private router: Router, private iconService: IgxIconService) {
+  constructor(private router: Router, private iconService: IgxIconService, private cartService: CartService) {
   }
 
   public ngOnInit(): void {

@@ -21,7 +21,7 @@ $hover-icon-color: $accent-secondary-light);
 $icon-theme: igx-icon-theme($palette: $my-color-palette, $color: $gouda-yellow);
 
 $elevations-color: igx-elevations($accent-secondary-light, $accent-secondary-medium, $accent-secondary-strong);
-$custom-shadow: igx-elevation($elevations-color, 10);
+$custom-shadow: igx-elevation($elevations-color, 6);
 $menu-card-theme: igx-card-theme($background: $hot-sauce, 
   $header-text-color: #fff,
   $content-text-color: $gouda-yellow,
@@ -34,6 +34,12 @@ $fill-color: $accent-secondary-medium,
 $tick-color: $primary-color,
 $disabled-color: igx-color($my-color-palette, 'grays', 400));
 
+$h4-style: igx-type-style(
+    $margin-top: 0
+);
+
+$h4-typescale: igx-type-scale($h4: $h4-style);
+
 @include igx-navbar($nav-bar-theme);
 @include igx-icon($icon-theme);
 @include igx-card($menu-card-theme);
@@ -41,13 +47,18 @@ $disabled-color: igx-color($my-color-palette, 'grays', 400));
 
 
 
-@font-face {
-  font-family: pizzaFont;
-  src: url(./assets/fonts/fatfingr.ttf);
-}
+// @font-face {
+//   font-family: pizzaFont;
+//   src: url(./assets/fonts/PermanentMarker.ttf);
+// }
 
 @include igx-typography(
-  $font-family: "pizzaFont, sans-serif"
+  // $font-family: "'Open Sans', sans-serif",
+// $font-family: "'Bungee', cursive",
+// $font-family: "'Black Ops One', cursive",
+// $font-family: "'Shrikhand', cursive",
+$font-family: "'Lalezar', cursive",
+  $type-scale: $h4-typescale
 );
 
 .product__wrapper {
