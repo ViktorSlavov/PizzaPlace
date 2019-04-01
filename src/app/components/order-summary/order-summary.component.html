@@ -1,0 +1,7 @@
+<div class="order-summary">
+  Placed on {{ order.orderDate | date: 'shortDate' }}
+  Total price: {{ order.orderPrice }}
+  <div class="order-summary__item" *ngFor="let item of order.items">
+    <app-order-summary-item [item]="item.product" [quantity]="item.quantity"></app-order-summary-item>
+  </div>
+</div>

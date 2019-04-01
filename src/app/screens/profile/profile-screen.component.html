@@ -29,16 +29,7 @@
             </igx-expansion-panel-title>
           </igx-expansion-panel-header>
           <igx-expansion-panel-body>
-            <igx-card *ngFor="let order of previousOrders | async">
-              <igx-card-header>
-                {{ order.date | date:'shortDate' }}
-              </igx-card-header>
-              <igx-card-content>
-                <div *ngFor="let item of order.items">
-                  {{ item.name }}
-                </div>
-              </igx-card-content>
-            </igx-card>
+            <app-order-summary *ngFor="let order of previousOrders | async" [order]="order"></app-order-summary>
           </igx-expansion-panel-body>
         </igx-expansion-panel>
   </igx-card-content>

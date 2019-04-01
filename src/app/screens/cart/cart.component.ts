@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Order, Product, OrderChangeEmit } from 'src/app/common/interfaces';
+import { Order, OrderChangeEmit } from 'src/app/common/interfaces';
 import { CartService } from 'src/app/services/cart.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
@@ -22,6 +22,10 @@ export class CartComponent implements OnInit, OnDestroy {
 
   orderChange(event: OrderChangeEmit, product: DocumentReference) {
     this.cartService.changeEntry(product, event.quantity);
+  }
+
+  placeOrder() {
+    this.cartService.placeOrder();
   }
 
   ngOnDestroy() {

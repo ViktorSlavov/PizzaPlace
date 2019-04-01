@@ -11,8 +11,11 @@ import { Order } from '../../common/interfaces';
 export class ProfilePageComponent implements OnInit {
 
 
-  public previousOrders: Observable<Order>;
-  constructor(protected profileService: ProfileService) {}
+  public orders;
+  public previousOrders: Observable<Order[]>;
+  constructor(protected profileService: ProfileService) {
+    this.previousOrders = this.profileService.getPastOrders();
+  }
 
   ngOnInit() {
   }

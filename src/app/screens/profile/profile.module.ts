@@ -6,6 +6,8 @@ import { IgxCardModule, IgxIconModule, IgxAvatarModule, IgxInputGroupModule,
   IgxExpansionPanelModule, IgxButtonModule } from 'igniteui-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserInfoFormComponent } from '../../components/user-info-form/user-info-form.component';
+import { OrderSummaryComponent } from '../../components/order-summary/order-summary.component';
+import { OrderSummaryItemComponent } from '../../components/order-summary/order-summary-item/order-summary-item.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,6 @@ import { UserInfoFormComponent } from '../../components/user-info-form/user-info
     IgxButtonModule,
     ReactiveFormsModule
   ],
-  declarations: [ProfilePageComponent, UserInfoFormComponent]
+  declarations: [ProfilePageComponent, UserInfoFormComponent, OrderSummaryComponent, OrderSummaryItemComponent]
 })
 export class ProfileModule { }

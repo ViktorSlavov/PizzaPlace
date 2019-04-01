@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { UserService, User } from '../authentication';
 import { FirebaseDataService } from '../firebase.service';
-import { UserInfo } from '../common/interfaces';
+import { UserInfo, Order } from '../common/interfaces';
 import { from, Observable } from 'rxjs';
 import { map, take, shareReplay } from 'rxjs/operators';
+import { AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,20 @@ export class ProfileService {
 
   protected currentDB: UserInfo;
   protected currentUser: User;
+  protected ordersQuery: AngularFirestoreCollection<Order>;
   constructor(protected userService: UserService, protected firebase: FirebaseDataService) {
     if (this.userService.currentUser) {
       this.currentUser = this.userService.currentUser;
     }
     this.checkUser();
+  }
+
+  public getPastOrders(): Observable<Order[]> {
+    if (!this.ordersQuery) {
+      this.ordersQuery = this.firebase.getCollection<Order>('orders',
+      ref => ref.where('user', '==', this.currentUser.token).where('active', '==', false).where('checkOut', '==', true));
+    }
+    return this.ordersQuery.valueChanges().pipe(shareReplay(1));
   }
 
   protected registerCurrentUserInDB() {
@@ -28,7 +38,7 @@ export class ProfileService {
   }
 
   public get user(): UserInfo {
-    return this.currentDB ? Object.assign({} , this.currentDB) : null; 
+    return this.currentDB ? Object.assign({} , this.currentDB) : null;
   }
 
   protected checkUser() {

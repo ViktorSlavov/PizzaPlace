@@ -32,6 +32,19 @@ export class CartService {
     return this.items$;
   }
 
+  public async placeOrder() {
+    if (!this.activeOrderId) {
+      await this.collection.ref.get().then((entry: QuerySnapshot<Product>) => {
+        this.activeOrderId = entry.docs[0].id;
+      });
+    }
+    this.collection.doc(this.activeOrderId).update({
+      active: false,
+      checkOut: true,
+      orderDate: new Date()
+    });
+  }
+
   public async changeEntry(product: DocumentReference, quantity: number) {
     const targetIndex = this.orderCache.items.findIndex(e => e.product.path === product.path);
     if (targetIndex < 0) {

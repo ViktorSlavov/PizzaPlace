@@ -15,14 +15,13 @@
 </div>
 <div *ngIf="order?.items.length" class="cart__text-block">
   <h5>
-    Continue to checkout
+    Order Details:
   </h5>
-  <div class="">
-    <span>
-      Total Price:
-    </span>
+  <div class="cart__details">
+    Total Price:
     <span>
       {{ order.orderPrice }}
     </span>
+    <button igxButton="raised" (click)="placeOrder()">Place Order <igx-icon>shopping_cart</igx-icon></button>
   </div>
 </div>
