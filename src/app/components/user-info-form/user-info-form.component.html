@@ -1,4 +1,4 @@
-<form class="user-info" [formGroup]="userInfo" (ngSubmit)="onSubmit()">
+<form class="user-info" [formGroup]="userInfo" (ngSubmit)="onSubmit($event)">
   <igx-input-group>
     <label igxLabel for="firstName">First Name</label>
     <input igxInput formControlName="firstName" name="firstName" type="text">

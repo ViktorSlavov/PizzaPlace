@@ -89,12 +89,12 @@ export interface UserAddress {
     };
 }
 export interface UserInfo {
-    first_name: string;
-    last_name: string;
+    firstName: string;
+    lastName: string;
     phone: string;
     email: string;
-    address: UserAddress;
-    token: string;
+    address?: UserAddress;
+    token?: string;
 }
 
 export interface Offer {

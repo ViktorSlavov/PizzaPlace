@@ -30,18 +30,22 @@ export class UserInfoFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.profileService.getUser().subscribe(userData => {
-      this.userInfo.patchValue({
-        firstName: userData.first_name,
-        lastName: userData.last_name,
-        email: userData.email,
-        phone: userData.phone
-      });
+      this.userInfo.patchValue(userData);
     });
   }
 
   ngOnDestroy() {
     this._destroy$.next();
     this._destroy$.complete();
+  }
+
+  onSubmit(event) {
+    Object.keys(this.userInfo.value).forEach(key => {
+      if (this.userInfo.value[key] === undefined || this.userInfo.value[key] === null) {
+        delete this.userInfo.value[key];
+      }
+    });
+    this.profileService.updateUser(this.userInfo.value);
   }
 
 }
