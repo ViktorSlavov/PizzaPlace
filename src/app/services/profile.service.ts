@@ -27,6 +27,10 @@ export class ProfileService {
     });
   }
 
+  public get user(): UserInfo {
+    return this.currentDB ? Object.assign({} , this.currentDB) : null; 
+  }
+
   protected checkUser() {
     this.getUser().pipe(take(1)).subscribe((response: UserInfo) => {
       if (!response) {

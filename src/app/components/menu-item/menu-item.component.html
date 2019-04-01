@@ -1,7 +1,7 @@
 <igx-card>
   <div *ngIf="product" class="product__image-wrapper" [routerLink]="['product', product.name]">
     <div *ngIf="product.specifics?.length" class="product__specifics">
-      <div *ngFor="let specific of product.specifics" class="specific">
+      <div *ngFor="let specific of product.specifics" class="specific" title="Contains {{ specific.toLowerCase() }}">
         {{ imageMap[specific] }}
       </div>
     </div>

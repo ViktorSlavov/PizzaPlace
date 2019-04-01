@@ -1,4 +1,5 @@
 <igx-card>
+  <button (click)="debug()">Debug</button>
   <igx-card-header>
     <h5>
       <igx-avatar roundShape="true">
@@ -10,7 +11,35 @@
     </h5>
   </igx-card-header>
   <igx-card-content>
-      <form class="input-group-form" [formGroup]="user" (ngSubmit)="onSubmit()">
-      </form>
+      <igx-expansion-panel>
+        <igx-expansion-panel-header>
+          <igx-expansion-panel-title>
+            Personal Information
+          </igx-expansion-panel-title>
+        </igx-expansion-panel-header>
+        <igx-expansion-panel-body>
+          <app-user-info-form>
+          </app-user-info-form>
+        </igx-expansion-panel-body>
+      </igx-expansion-panel>
+      <igx-expansion-panel>
+          <igx-expansion-panel-header>
+            <igx-expansion-panel-title>
+              Previous Orders
+            </igx-expansion-panel-title>
+          </igx-expansion-panel-header>
+          <igx-expansion-panel-body>
+            <igx-card *ngFor="let order of previousOrders | async">
+              <igx-card-header>
+                {{ order.date | date:'shortDate' }}
+              </igx-card-header>
+              <igx-card-content>
+                <div *ngFor="let item of order.items">
+                  {{ item.name }}
+                </div>
+              </igx-card-content>
+            </igx-card>
+          </igx-expansion-panel-body>
+        </igx-expansion-panel>
   </igx-card-content>
 </igx-card>

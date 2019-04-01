@@ -1,0 +1,47 @@
+<form class="user-info" [formGroup]="userInfo" (ngSubmit)="onSubmit()">
+  <igx-input-group>
+    <label igxLabel for="firstName">First Name</label>
+    <input igxInput formControlName="firstName" name="firstName" type="text">
+  </igx-input-group>
+  <igx-input-group>
+    <label igxLabel for="lastName">Last Name</label>
+    <input igxInput formControlName="lastName" name="lastName" type="text">
+  </igx-input-group>
+  <igx-input-group>
+    <label igxLabel for="phone">Phone</label>
+    <igx-prefix>+359</igx-prefix>
+    <input igxInput formControlName="phone" name="phone" maxlength="9" minlength="9" type="tel">
+  </igx-input-group>
+  <igx-input-group>
+    <label igxLabel for="email">E-Mail</label>
+    <input igxInput formControlName="email" name="email" type="email">
+  </igx-input-group>
+  <div class="user-info__address">
+    <h5>Address</h5>
+    <igx-input-group>
+      <label igxLabel for="streetName">Street Name</label>
+      <input igxInput formControlName="streetName" name="streetName" type="text">
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="streetNumber">Street Number</label>
+      <input igxInput formControlName="streetNumber" name="streetNumber" type="number">
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="buildingNumber">Building Number</label>
+      <input igxInput formControlName="buildingNumber" name="buildingNumber" type="text">
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="buildingEntrance">Entrance</label>
+      <input igxInput formControlName="buildingEntrance" name="buildingEntrance" type="text">
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="buildingAppartment">Appartment</label>
+      <input igxInput formControlName="buildingAppartment" name="buildingAppartment" type="text">
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="buildingFloor">Floor</label>
+      <input igxInput formControlName="buildingFloor" name="buildingFloor" type="text">
+    </igx-input-group>
+  </div>
+  <button igxButton type="submit">Update Information</button>
+</form>

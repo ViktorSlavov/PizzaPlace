@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Order } from '../../common/interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -9,15 +10,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class ProfilePageComponent implements OnInit {
 
-  public user: FormGroup;
 
-  constructor(protected profileService: ProfileService, protected formBuilder: FormBuilder) {
-    this.user = this.formBuilder.group({
-
-    });
-  }
+  public previousOrders: Observable<Order>;
+  constructor(protected profileService: ProfileService) {}
 
   ngOnInit() {
   }
-
 }
