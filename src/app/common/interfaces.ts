@@ -55,6 +55,7 @@ export interface Order {
         quantity: number
     }[];
     orderPrice: number;
+    orderDate: Date;
 }
 
 export interface CartEntry {
@@ -63,6 +64,10 @@ export interface CartEntry {
     quantity: number;
 }
 
+export interface ProductRef {
+    ref: DocumentReference;
+    data: Product;
+}
 export interface Product {
     name: string;
     type: PRODUCT_TYPES;

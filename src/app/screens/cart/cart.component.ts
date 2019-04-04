@@ -1,8 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Order, OrderChangeEmit } from 'src/app/common/interfaces';
 import { CartService } from 'src/app/services/cart.service';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { ProductsService } from 'src/app/services/products.service';
+import { Subject } from 'rxjs';
 import { DocumentReference } from 'angularfire2/firestore';
 import { takeUntil } from 'rxjs/operators';
 
@@ -12,16 +11,11 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit, OnDestroy {
-  protected orderSub$: BehaviorSubject<Order>;
   public order: Order;
   public items: {product: DocumentReference; quantity: number}[] = [];
   destroy$: Subject<any> = new Subject();
 
-  constructor(protected cartService: CartService, protected productService: ProductsService, protected cdr: ChangeDetectorRef) {
-  }
-
-  orderChange(event: OrderChangeEmit, product: DocumentReference) {
-    this.cartService.changeEntry(product, event.quantity);
+  constructor(protected cartService: CartService) {
   }
 
   placeOrder() {
@@ -34,8 +28,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.orderSub$ = this.cartService.items;
-    this.orderSub$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+    this.cartService.order.pipe(takeUntil(this.destroy$)).subscribe((value) => {
       this.order = value;
     });
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, PRODUCT_TYPES, PRODUCT_SPECIFICS, PRODUCT_SPECIFICS_IMAGES } from 'src/app/common/interfaces';
+import { Product, PRODUCT_TYPES, PRODUCT_SPECIFICS, PRODUCT_SPECIFICS_IMAGES, ProductRef } from 'src/app/common/interfaces';
 import { Observable, from } from 'rxjs';
 import { dummyProducts } from '../../common/dummy.data';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -29,23 +29,19 @@ export class MenuComponent implements OnInit {
   public searchValue = '';
   public typeFilter: {[key: string]: boolean} = {};
   public specificFilter: {[key: string]: boolean} = {};
-  public products: Observable<Product[]>;
+  public products: Observable<ProductRef[]>;
   public specifics: string[] = [];
   public types: string[] = [];
   public pipeTrigger = 0;
 
-  constructor(public productService: ProductsService, protected cartService: CartService) { }
+  constructor(public productService: ProductsService) { }
 
   triggerCheck() {
     this.pipeTrigger++;
   }
 
-  addToCart(item: Product) {
-    this.cartService.addEntry(item.name);
-  }
-
   ngOnInit() {
-    this.products = this.productService.getData();
+    this.products = this.productService.items;
     const types = Object.keys(this.productTypes);
     const specifics = Object.keys(this.productSpecifics);
     for (let i = 0; i < types.length; i++) {

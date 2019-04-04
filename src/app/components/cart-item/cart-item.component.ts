@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, Input, EventEmitter, OnDestroy } from '@angular/core';
-import { OrderChangeEmit } from 'src/app/common/interfaces';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { OrderSummaryItemComponent } from '../order-summary/order-summary-item/order-summary-item.component';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -11,34 +11,19 @@ import { OrderSummaryItemComponent } from '../order-summary/order-summary-item/o
 export class CartItemComponent extends OrderSummaryItemComponent implements OnInit, OnDestroy {
   public maxItems = 16;
 
-  @Output()
-  public quantityChange = new EventEmitter<OrderChangeEmit>();
-
-  constructor(protected productService: ProductsService) {
+  constructor(protected cartService: CartService, protected productService: ProductsService) {
     super(productService);
   }
 
-  subtract() {
-    this.quantity = this.quantity > 0 ? this.quantity - 1 : this.quantity;
-    this.quantityChange.emit({
-      product: this.product,
-      quantity: this.quantity
-    });
+  add() {
+    this.cartService.addItem(this.item.id);
   }
 
-  add() {
-    this.quantity = this.maxItems > this.quantity ? this.quantity + 1 : this.quantity;
-    this.quantityChange.emit({
-      product: this.product,
-      quantity: this.quantity
-    });
+  subtract() {
+    this.cartService.removeItem(this.item.id);
   }
 
   remove() {
-    this.quantity = 0;
-    this.quantityChange.emit({
-      product: this.product,
-      quantity: this.quantity
-    });
+    this.cartService.deleteItem(this.item.id);
   }
 }

@@ -1,5 +1,5 @@
 <igx-card>
-  <div *ngIf="product" class="product__image-wrapper" [routerLink]="['product', product.name]">
+  <div *ngIf="productRef" class="product__image-wrapper" [routerLink]="['product',productRef.ref.id]">
     <div *ngIf="product.specifics?.length" class="product__specifics">
       <div *ngFor="let specific of product.specifics" class="specific" title="Contains {{ specific.toLowerCase() }}">
         {{ imageMap[specific] }}
@@ -12,16 +12,13 @@
       {{ product?.name }}
     </h4>
   </igx-card-header>
-  <div class="product__body">
-    {{ product?.description }}
-  </div>
   <igx-card-actions>
     <div class="product__order">
       <div  class="product__price">
           BGN {{ product?.price }}
       </div>
       <div class="product__buy">
-        <button igxButton="raised" (click)="addition.emit()">Add To Cart</button>
+        <button igxButton="raised" (click)="addToCart()">Add To Cart</button>
       </div>
     </div>
   </igx-card-actions>

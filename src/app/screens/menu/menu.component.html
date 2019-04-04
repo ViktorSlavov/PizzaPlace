@@ -27,5 +27,5 @@
   <app-menu-item [@scaleIn]="true" *ngFor="let product of products | async
   |textFilter:searchValue:pipeTrigger
   |categoryFilter:specificFilter:pipeTrigger
-  |typeFilter:typeFilter:pipeTrigger" [product]="product" (addition)="addToCart(product)"></app-menu-item>
+  |typeFilter:typeFilter:pipeTrigger" [productRef]="product" (addition)="addToCart(product)"></app-menu-item>
 </div>

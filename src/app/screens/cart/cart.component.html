@@ -10,8 +10,7 @@
 
 </div>
 <div class="cart__items">
-  <app-cart-item *ngFor="let item of order?.items" [item]="item.product" [quantity]="item.quantity"
-    (quantityChange)="orderChange($event, item.product)"></app-cart-item>
+  <app-cart-item *ngFor="let item of order?.items" [item]="item.product" [quantity]="item.quantity"></app-cart-item>
 </div>
 <div *ngIf="order?.items.length" class="cart__text-block">
   <h5>

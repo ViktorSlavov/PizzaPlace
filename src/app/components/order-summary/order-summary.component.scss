@@ -1,0 +1,21 @@
+:host {
+    margin: 4px 8px 12px 8px;
+}
+
+.order__title {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.order__detail {
+    display: flex;
+    flex-flow: column;
+    width: 50%;
+}
+
+.order-summary__items {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}

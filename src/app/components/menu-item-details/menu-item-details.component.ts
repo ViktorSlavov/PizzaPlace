@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PRODUCT_SPECIFICS, PRODUCT_TYPES, Product } from 'src/app/common/interfaces';
+import { MenuItemComponent } from '../menu-item/menu-item.component';
+import { ProductsService } from 'src/app/services/products.service';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { CartService } from 'src/app/services/cart.service';
 
 
 const item: Product = {
@@ -18,12 +23,22 @@ const item: Product = {
   templateUrl: './menu-item-details.component.html',
   styleUrls: ['./menu-item-details.component.scss']
 })
-export class MenuItemDetailsComponent implements OnInit {
-  product: Product = null;
-  constructor() { }
-
-  ngOnInit() {
-    this.product = item;
+export class MenuItemDetailsComponent extends MenuItemComponent implements OnInit {
+  constructor(
+    protected productService: ProductsService,
+    protected cartService: CartService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+    super(productService, cartService);
   }
 
+  ngOnInit() {
+    this.route.paramMap.pipe(
+      map((params: ParamMap) =>
+        this.productService.getProduct(params.get('id')))
+    ).subscribe(data => {
+      this.productRef = data;
+    });
+  }
 }

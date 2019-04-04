@@ -8,10 +8,10 @@
   <div class="menu-item__bottom-container">
     <div class="menu-item__order">
       <div class="menu-item__price">
-        {{ product.price }}
+        BGN {{ product.price }}
       </div>
       <div class="menu-item__cart">
-        <button igxButton (click)="addToCart">Add To Cart</button>
+        <button igxButton="raised" (click)="addToCart()">Add To Cart</button>
       </div>
     </div>
     <div class="menu-item__specifics">

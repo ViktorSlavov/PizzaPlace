@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Order } from '../../common/interfaces';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-order-summary',
@@ -11,9 +12,13 @@ export class OrderSummaryComponent implements OnInit {
   @Input()
   public order: Order = null;
 
-  constructor() { }
+  constructor(protected cartService: CartService) { }
 
   ngOnInit() {
+  }
+
+  replaceOrder() {
+    this.cartService.replaceOrder(this.order);
   }
 
 }

@@ -1,7 +1,23 @@
-<div class="order-summary">
-  Placed on {{ order.orderDate | date: 'shortDate' }}
-  Total price: {{ order.orderPrice }}
-  <div class="order-summary__item" *ngFor="let item of order.items">
-    <app-order-summary-item [item]="item.product" [quantity]="item.quantity"></app-order-summary-item>
+<div *ngIf="order" class="order__title">
+  <div class="order__detail">
+    <div class="order__field">
+      Placed on:
+    </div>
+    <div class="order__value">
+      {{ order.orderDate.toDate() | date: 'shortDate' }}
+    </div>
+  </div>
+  <div class="order__detail">
+    <div class="order__field">
+      Total Price:
+    </div>
+    <div class="order__value">
+      {{ order.orderPrice }}
+    </div>
   </div>
 </div>
+<div class="order-summary__items">
+  <app-order-summary-item *ngFor="let item of order.items" [item]="item.product" [quantity]="item.quantity">
+  </app-order-summary-item>
+</div>
+<button igxButton="raised" (click)="replaceOrder()">Place order again</button>

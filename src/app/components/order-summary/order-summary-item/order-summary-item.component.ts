@@ -2,7 +2,6 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
 import { Subject } from 'rxjs';
 import { Product } from '../../../common/interfaces';
-import { takeUntil } from 'rxjs/operators';
 import { DocumentReference } from 'angularfire2/firestore';
 
 @Component({
@@ -22,9 +21,7 @@ export class OrderSummaryItemComponent implements OnInit, OnDestroy {
   constructor(protected productService: ProductsService) { }
 
   public ngOnInit() {
-    this.productService.getProductByName(this.item.id).pipe(takeUntil(this.destroy$)).subscribe(e => {
-      this.product = e;
-    });
+    this.product = this.productService.getProduct(this.item.id).data;
   }
 
   public ngOnDestroy() {

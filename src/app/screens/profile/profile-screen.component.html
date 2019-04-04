@@ -10,26 +10,26 @@
     </h5>
   </igx-card-header>
   <igx-card-content>
-      <igx-expansion-panel>
-        <igx-expansion-panel-header>
-          <igx-expansion-panel-title>
-            Personal Information
-          </igx-expansion-panel-title>
-        </igx-expansion-panel-header>
-        <igx-expansion-panel-body>
-          <app-user-info-form>
-          </app-user-info-form>
-        </igx-expansion-panel-body>
-      </igx-expansion-panel>
-      <igx-expansion-panel>
-          <igx-expansion-panel-header>
-            <igx-expansion-panel-title>
-              Previous Orders
-            </igx-expansion-panel-title>
-          </igx-expansion-panel-header>
-          <igx-expansion-panel-body>
-            <app-order-summary *ngFor="let order of previousOrders | async" [order]="order"></app-order-summary>
-          </igx-expansion-panel-body>
-        </igx-expansion-panel>
+    <igx-expansion-panel>
+      <igx-expansion-panel-header>
+        <igx-expansion-panel-title>
+          Personal Information
+        </igx-expansion-panel-title>
+      </igx-expansion-panel-header>
+      <igx-expansion-panel-body>
+        <app-user-info-form>
+        </app-user-info-form>
+      </igx-expansion-panel-body>
+    </igx-expansion-panel>
+    <igx-expansion-panel>
+      <igx-expansion-panel-header>
+        <igx-expansion-panel-title>
+          Previous Orders
+        </igx-expansion-panel-title>
+      </igx-expansion-panel-header>
+      <igx-expansion-panel-body>
+        <app-order-summary *ngFor="let order of pastOrders | async" [order]="order"></app-order-summary>
+      </igx-expansion-panel-body>
+    </igx-expansion-panel>
   </igx-card-content>
 </igx-card>

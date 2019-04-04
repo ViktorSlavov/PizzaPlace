@@ -1,40 +1,30 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
-import { Product, PRODUCT_SPECIFICS_IMAGES } from 'src/app/common/interfaces';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Product, PRODUCT_SPECIFICS_IMAGES, ProductRef } from 'src/app/common/interfaces';
 import { ProductsService } from 'src/app/services/products.service';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss']
 })
-export class MenuItemComponent implements OnInit, AfterViewInit {
-  @Output()
-  public addition = new EventEmitter();
+export class MenuItemComponent implements OnInit {
 
   @Input()
-  public product: Product;
-  public imageMap = PRODUCT_SPECIFICS_IMAGES;
-  destroy$: Subject<any> = new Subject();
+  public productRef: ProductRef;
 
-  public getUrl(relativeUrl: string) {
-    return `url('${relativeUrl}')`;
+  public get product(): Product {
+    return this.productRef ? this.productRef.data : null;
   }
 
-  constructor(protected productService: ProductsService, protected currentRoute: ActivatedRoute) { }
+  public imageMap = PRODUCT_SPECIFICS_IMAGES;
+
+  constructor(protected productService: ProductsService, protected cartService: CartService) { }
+
+  addToCart() {
+    this.cartService.addItem(this.productRef.ref.id);
+  }
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit() {
-    if (this.product === undefined) {
-      this.currentRoute.params.subscribe(e => {
-        this.productService.getProductByName(e.name).pipe(takeUntil(this.destroy$)).subscribe(product => {
-          this.product = product;
-        });
-      });
-    }
   }
 }

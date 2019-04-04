@@ -9,14 +9,11 @@ import { Order } from '../../common/interfaces';
   styleUrls: ['./profile-screen.component.scss']
 })
 export class ProfilePageComponent implements OnInit {
-
-
-  public orders;
-  public previousOrders: Observable<Order[]>;
+  public pastOrders: Observable<Order[]>;
   constructor(protected profileService: ProfileService) {
-    this.previousOrders = this.profileService.getPastOrders();
   }
 
   ngOnInit() {
+    this.pastOrders = this.profileService.pastOrders;
   }
 }
