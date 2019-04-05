@@ -3,8 +3,9 @@ import { PRODUCT_SPECIFICS, PRODUCT_TYPES, Product } from 'src/app/common/interf
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 import { ProductsService } from 'src/app/services/products.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { CartService } from 'src/app/services/cart.service';
+import { Subject } from 'rxjs';
 
 
 const item: Product = {
@@ -34,11 +35,15 @@ export class MenuItemDetailsComponent extends MenuItemComponent implements OnIni
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      map((params: ParamMap) =>
-        this.productService.getProduct(params.get('id')))
-    ).subscribe(data => {
-      this.productRef = data;
+    const unsub$ = new Subject();
+    this.route.paramMap.pipe(map((paramMap) => {
+      return  paramMap.get('id');
+    })).subscribe((param: string) => {
+      this.productService.items.pipe(takeUntil(unsub$)).subscribe(() => {
+        this.productRef = this.productService.getProduct(param);
+        unsub$.next();
+        unsub$.complete();
+      });
     });
   }
 }

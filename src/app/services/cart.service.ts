@@ -31,6 +31,10 @@ export class CartService {
     this.getData();
   }
 
+  public get totalItemCount(): number {
+    return this.orderCache.items.reduce((acc, item) => acc + item.quantity, 0);
+  }
+
   public getData() {
     if (!this.dataSub) {
       this.dataSub = this.collection.valueChanges().pipe(map(entry => entry[0]), takeUntil(this.destroy$)).subscribe(data => {
@@ -62,6 +66,7 @@ export class CartService {
   protected updateOrder() {
     if (this.orderCache.items.length === 0) {
       this.collection.doc(this.activeOrderId).delete();
+      this._activeOrderId = null;
     } else {
       this.orderCache.orderPrice = parseFloat(this.orderCache.orderPrice.toFixed(2));
       this.collection.doc(this.activeOrderId).update(this.orderCache);

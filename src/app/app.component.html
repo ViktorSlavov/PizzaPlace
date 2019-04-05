@@ -9,12 +9,11 @@
     </igx-action-icon>
     <button igxButton routerLink="/menu">
       <igx-icon>restaurant_menu</igx-icon>
-      &nbsp;menu
     </button>
     
     <button igxButton routerLink="/cart">
-      <igx-icon>shopping_basket</igx-icon>
-      &nbsp;cart
+      <igx-icon [@addedItem]="adding === 1 ? 'grow' : adding === - 1 ? 'shrink' : 'initial'">shopping_basket</igx-icon>
+      <span class="badge">{{ orderQuantity }}</span>
     </button>
     
     <app-login-bar profileLink></app-login-bar>

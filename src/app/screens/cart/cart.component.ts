@@ -12,6 +12,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class CartComponent implements OnInit, OnDestroy {
   public order: Order;
+  public totalItemCount: number;
   public items: {product: DocumentReference; quantity: number}[] = [];
   destroy$: Subject<any> = new Subject();
 
@@ -29,6 +30,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.cartService.order.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+      this.totalItemCount = this.cartService.totalItemCount;
       this.order = value;
     });
   }

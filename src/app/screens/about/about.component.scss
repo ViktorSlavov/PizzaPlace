@@ -1,0 +1,13 @@
+
+@import '../../../shared.scss';
+
+:host {
+    display: block;
+    width: 800px;
+    height: 800px;
+    overflow-y: overlay;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: $elevation-shadow-8;
+}

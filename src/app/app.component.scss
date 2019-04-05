@@ -1,6 +1,15 @@
 @import '../shared.scss';
 
 :host {
+
+  igx-navbar {
+    igx-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 2.5rem;
+      color: $gouda-yellow;
+    }
+  }
 }
 
 .content {
@@ -43,4 +52,20 @@
   height: 100%;
   background-image: url('/assets/pizzas/background_3.jpg');
   background-size: cover;
+}
+
+.badge {
+  position: absolute;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid $primary-color;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    background: #fff;
+    color: $primary-color;
 }

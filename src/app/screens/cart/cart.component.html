@@ -1,7 +1,7 @@
 <div class="cart__text-block">
   <h4>
     <ng-container *ngIf="order?.items.length; else emptyCart">
-      You have {{ order?.items.length }} items in your cart.
+      You have {{ totalItemCount }} items in your cart.
     </ng-container>
     <ng-template #emptyCart>
       Looks like your cart is empty. Why not add some <a routerLink="/menu">delicious pizza</a>?

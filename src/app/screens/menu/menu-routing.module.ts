@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MenuComponent } from './menu.component';
 import { MenuItemDetailsComponent } from 'src/app/components/menu-item-details/menu-item-details.component';
+import { LoadingScreenComponent } from 'src/app/components/loading-screen/loading-screen.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: MenuItemDetailsComponent
+  },
+  {
+    path: 'loading',
+    component: LoadingScreenComponent
   }
 ];
 

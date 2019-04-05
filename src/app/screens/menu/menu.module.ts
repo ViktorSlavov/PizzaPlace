@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipesModule } from 'src/app/pipes/filter-pipes.module';
 import { ImagePipeModule } from 'src/app/pipes/image-pipe.module';
 import { MenuItemDetailsComponent } from 'src/app/components/menu-item-details/menu-item-details.component';
+import { LoadingScreenComponent } from 'src/app/components/loading-screen/loading-screen.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { MenuItemDetailsComponent } from 'src/app/components/menu-item-details/m
     FilterPipesModule,
     ImagePipeModule
   ],
-  declarations: [MenuComponent, MenuItemComponent, MenuItemDetailsComponent]
+  declarations: [MenuComponent, MenuItemComponent, MenuItemDetailsComponent, LoadingScreenComponent]
 })
 export class MenuModule { }

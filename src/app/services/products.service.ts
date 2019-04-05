@@ -1,8 +1,8 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, from, ReplaySubject, Subscription } from 'rxjs';
+import { Subject, ReplaySubject, Subscription } from 'rxjs';
 import { Product, ProductRef } from '../common/interfaces';
-import { shareReplay, takeUntil, map, share, filter, take } from 'rxjs/operators';
-import { AngularFirestoreCollection, DocumentReference } from 'angularfire2/firestore';
+import { shareReplay, takeUntil } from 'rxjs/operators';
+import { AngularFirestoreCollection } from 'angularfire2/firestore';
 import { FirebaseDataService } from '../firebase.service';
 
 @Injectable({

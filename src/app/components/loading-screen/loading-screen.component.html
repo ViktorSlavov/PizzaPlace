@@ -1,0 +1,11 @@
+<div class="circle pizza">
+  <ng-container *ngFor="let slice of slices">
+    <div *ngIf="hiddenSlice !== slice" class="slice {{'slice--' + slice}}">
+      <div class="topping-container">
+        <div class="circle topping" style="top: 8px; left: 12px;"></div>
+        <div class="circle topping" style="top: 12px; left: 36px;"></div>
+        <div class="circle topping" style="top: 32px; left: 28px;"></div>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,4 +1,4 @@
-<div class="menu__filter">
+<div *ngIf="(products | async)?.length; else loading" class="menu__filter">
   <div class="menu__filter-search">
     <igx-input-group type="search">
       <label igxLabel>Filter by name</label>
@@ -29,3 +29,6 @@
   |categoryFilter:specificFilter:pipeTrigger
   |typeFilter:typeFilter:pipeTrigger" [productRef]="product" (addition)="addToCart(product)"></app-menu-item>
 </div>
+<ng-template #loading>
+  <app-loading-screen></app-loading-screen>
+</ng-template>

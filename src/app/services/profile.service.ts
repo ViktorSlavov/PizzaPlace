@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { UserService, User } from '../authentication';
 import { FirebaseDataService } from '../firebase.service';
 import { UserInfo, Order } from '../common/interfaces';
-import { from, Observable, ReplaySubject, Subscribable, Subscription, Subject } from 'rxjs';
+import { from, Observable, ReplaySubject, Subscription, Subject } from 'rxjs';
 import { map, take, shareReplay, takeUntil } from 'rxjs/operators';
 import { AngularFirestoreCollection, QuerySnapshot } from 'angularfire2/firestore';
 
@@ -12,14 +12,16 @@ import { AngularFirestoreCollection, QuerySnapshot } from 'angularfire2/firestor
 export class ProfileService implements OnDestroy {
 
   protected currentDB: UserInfo;
-  protected currentUser: User;
+  protected _currentUser: User;
+  public currentUser = new ReplaySubject<User>(1);
   protected userQuery: AngularFirestoreCollection<UserInfo>;
   protected destroy$ = new Subject();
   protected _orderSub: Subscription;
   protected _pastOrders = new ReplaySubject<Order[]>(1);
   constructor(protected userService: UserService, protected firebase: FirebaseDataService) {
     if (this.userService.currentUser) {
-      this.currentUser = this.userService.currentUser;
+      this._currentUser = this.userService.currentUser;
+      this.currentUser.next(this._currentUser);
     }
     this.checkUser();
   }
@@ -41,21 +43,21 @@ export class ProfileService implements OnDestroy {
   protected getUserByEmail(): AngularFirestoreCollection<UserInfo> {
     if (!this.userQuery) {
       this.userQuery = this.firebase.getCollection<UserInfo>('users',
-        (ref) => ref.where('email', '==', this.currentUser.email));
+        (ref) => ref.where('email', '==', this._currentUser.email));
     }
     return this.userQuery;
   }
 
   public updateUser(info) {
     this.getUserByEmail().get().pipe(take(1)).subscribe((data: QuerySnapshot<UserInfo>) => {
-      this.getUserByEmail().doc(data.docs[0].id).update(info);
+      this.userQuery.doc(data.docs[0].id).update(info);
     });
   }
   protected registerCurrentUserInDB() {
     this.firebase.getCollection<UserInfo>('users').add({
-      firstName: this.currentUser.given_name,
-      lastName: this.currentUser.family_name,
-      email: this.currentUser.email,
+      firstName: this._currentUser.given_name,
+      lastName: this._currentUser.family_name,
+      email: this._currentUser.email,
       phone: '',
     });
   }
@@ -74,8 +76,7 @@ export class ProfileService implements OnDestroy {
     });
   }
   public getUser(): Observable<UserInfo> {
-    const currentUser = this.userService.currentUser;
-    if (!currentUser) {
+    if (!this.currentUser) {
       return from(new Promise<UserInfo>((res, rej) => res(null)));
     }
     return this.getUserByEmail()
