@@ -1,13 +1,13 @@
 <div *ngIf="order" class="order__title">
-  <div class="order__detail">
+  <div class="order__detail--long">
     <div class="order__field">
       Placed on:
     </div>
     <div class="order__value">
-      {{ order.orderDate.toDate() | date: 'shortDate' }}
+      {{ order.orderDate.toDate() | date: 'fullDate' }}
     </div>
   </div>
-  <div class="order__detail">
+  <div class="order__detail--short">
     <div class="order__field">
       Total Price:
     </div>

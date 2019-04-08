@@ -13,15 +13,11 @@
   <app-cart-item *ngFor="let item of order?.items" [item]="item.product" [quantity]="item.quantity"></app-cart-item>
 </div>
 <div *ngIf="order?.items.length" class="cart__text-block">
-  <h5>
-    Order Details:
-  </h5>
-  <div class="cart__details">
-    Total Price:
-    <span>
-      {{ order.orderPrice }}
-    </span>
-    <br/>
-    <button igxButton="raised" (click)="placeOrder()">Place Order <igx-icon>shopping_cart</igx-icon></button>
-  </div>
+  <h4>
+    Total Price
+  </h4>
+  <h4>
+    {{ order.orderPrice }}
+  </h4>
+  <button igxButton="raised" (click)="placeOrder()">Place Order <igx-icon>shopping_cart</igx-icon></button>
 </div>

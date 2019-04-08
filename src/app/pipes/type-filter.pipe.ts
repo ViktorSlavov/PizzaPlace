@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../common/interfaces';
+import { Product, ProductRef } from '../common/interfaces';
 
 @Pipe({
   name: 'typeFilter'
 })
 export class TypeFilterPipe implements PipeTransform {
 
-  transform(value: Product[], typeFilter: {[key: string]: boolean}, pipeTrigger: number): Product[] {
+  transform(value: ProductRef[], typeFilter: {[key: string]: boolean}, pipeTrigger: number): ProductRef[] {
     if (!typeFilter) {
       return value;
     }
@@ -17,8 +17,8 @@ export class TypeFilterPipe implements PipeTransform {
       return value;
     }
     return value.filter(entry => {
-      if (entry.type) {
-        return removedKeys.indexOf(entry.type) < 0;
+      if (entry.data.type) {
+        return removedKeys.indexOf(entry.data.type) < 0;
       } else {
         return true;
       }

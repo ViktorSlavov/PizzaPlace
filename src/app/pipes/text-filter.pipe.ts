@@ -1,17 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../common/interfaces';
+import { Product, ProductRef } from '../common/interfaces';
 
 @Pipe({
   name: 'textFilter'
 })
 export class TextFilterPipe implements PipeTransform {
 
-  transform(value: Product[], searchTerm: string, pipeTrigger: number): Product[] {
+  transform(value: ProductRef[], searchTerm: string, pipeTrigger: number): ProductRef[] {
     if (!searchTerm) {
       return value;
     }
     const lowerSearch = searchTerm.toLowerCase();
-    return value.filter(entry => entry.name.toLowerCase().indexOf(lowerSearch) > -1);
+    return value.filter(entry => entry.data.name.toLowerCase().indexOf(lowerSearch) > -1);
   }
 
 }

@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product, PRODUCT_TYPES } from '../common/interfaces';
+import { Product, PRODUCT_TYPES, ProductRef } from '../common/interfaces';
 
 @Pipe({
   name: 'categoryFilter'
 })
 export class CategoryFilterPipe implements PipeTransform {
 
-  transform(value: Product[], categoryFilter: {[key: string]: boolean}, pipeTrigger: number): Product[] {
+  transform(value: ProductRef[], categoryFilter: {[key: string]: boolean}, pipeTrigger: number): ProductRef[] {
     if (!categoryFilter) {
       return value;
     }
@@ -17,8 +17,8 @@ export class CategoryFilterPipe implements PipeTransform {
       return value;
     }
     return value.filter(entry => {
-      if (entry.specifics && entry.specifics.length) {
-        return entry.specifics.filter(specific => removedKeys.indexOf(specific) > -1).length === 0;
+      if (entry.data.specifics && entry.data.specifics.length) {
+        return entry.data.specifics.filter(specific => removedKeys.indexOf(specific) > -1).length === 0;
       } else {
         return true;
       }

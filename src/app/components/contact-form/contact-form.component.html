@@ -1,12 +1,12 @@
 <form class="contact" [formGroup]="user" (ngSubmit)="onSubmit($event)">
-  <igx-input-group>
+  <igx-input-group type="border">
     <input igxInput name="name" type="text" formControlName="name" />
     <label igxLabel for="name">Name</label>
     <igx-suffix>
       <igx-icon>person</igx-icon>
     </igx-suffix>
   </igx-input-group>
-  <igx-input-group>
+  <igx-input-group type="border">
     <igx-prefix>+359</igx-prefix>
     <label igxLabel for="phone">Phone</label>
     <input igxInput name="phone" type="text" formControlName="phone" />
@@ -15,17 +15,17 @@
     </igx-suffix>
     <igx-hint position="start">Ex.: +359 888 123 456</igx-hint>
   </igx-input-group>
-  <igx-input-group>
+  <igx-input-group type="border">
     <label igxLabel for="email">Email address</label>
     <input igxInput name="email" type="email" formControlName="email" />
     <igx-suffix>
       <igx-icon>email</igx-icon>
     </igx-suffix>
   </igx-input-group>
-  <igx-input-group>
+  <igx-input-group type="border">
+    <label igxLabel for="message"></label>
     <textarea igxInput name="message" formControlName="message">
     </textarea>
-    <label igxLabel for="message"></label>
   </igx-input-group>
   <div class="button-wrapper">
     <button igxButton="raised" igxRipple type="submit" [disabled]="!user.valid">Send Feedback</button>

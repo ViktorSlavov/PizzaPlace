@@ -1,5 +1,7 @@
 :host {
+    display: block;
     margin: 4px 8px 12px 8px;
+    padding: 8px;
 }
 
 .order__title {
@@ -8,14 +10,22 @@
     flex-wrap: wrap;
 }
 
-.order__detail {
+.order__detail--long, .order__detail--short {
     display: flex;
     flex-flow: column;
-    width: 50%;
+}
+.order__detail--short {
+    flex-basis: 35%;
+}
+
+.order__detail--long {
+    flex-basis: 65%;
 }
 
 .order-summary__items {
     display: flex;
     flex-flow: column;
+    padding-top: 8px;
     justify-content: space-between;
+    margin-bottom: 8px;
 }

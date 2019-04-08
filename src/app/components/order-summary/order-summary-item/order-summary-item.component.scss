@@ -1,4 +1,13 @@
 :host {
-    display: block;
-    padding: 8px;
+    display: flex;
+    border-bottom: 1px solid;
+    
+    .order__block--narrow {
+        flex-basis: 15%;
+        text-align: center;
+    }
+    
+    .order__block--wide {
+        flex-basis: 35%;
+    }
 }

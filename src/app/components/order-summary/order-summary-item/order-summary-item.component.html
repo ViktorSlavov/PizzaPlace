@@ -1,1 +1,12 @@
-{{ product?.name }} x {{ quantity }} = {{ product?.price * quantity }}
+<div class="order__block--narrow">
+    {{ quantity }}
+</div>
+<div class="order__block--wide">
+    {{ product?.name }}
+</div>
+<div class="order__block--narrow">
+
+</div>
+<div class="order__block--wide">
+    {{ product.price * quantity }}
+</div>

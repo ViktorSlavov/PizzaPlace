@@ -4,10 +4,15 @@
 :host {
     display: block;
     width: 800px;
-    height: 800px;
+    height: 640px;
     overflow-y: overlay;
     padding: 24px;
-    background: #fff;
+    background: $primary-color;
+    color: $gouda-yellow;
     border-radius: 8px;
     box-shadow: $elevation-shadow-8;
+
+    .content__description {
+        margin: 0px;
+    }
 }

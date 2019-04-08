@@ -1,6 +1,12 @@
 :host {
     padding: 8px;
+    margin: 16px 0px 16px 0px;
     display: block;
     border: 1px solid #000;
+    background-color: #fff;
     border-radius: 8px;
+
+    igx-input-group {
+        margin-top: 8px;
+    }
 }
