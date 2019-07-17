@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from '../../services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,7 +11,7 @@ import { ProfileService } from '../../services/profile.service';
 export class ContactFormComponent implements OnInit {
 
   public user: FormGroup;
-  constructor(protected fb: FormBuilder, protected profileService: ProfileService) {
+  constructor(protected fb: FormBuilder, protected profileService: ProfileService, protected router: Router) {
     const currentUser = profileService.user;
       this.user = fb.group({
           name: [currentUser ? `${currentUser.firstName} ${currentUser.lastName}` : '',  Validators.required],
@@ -23,6 +24,5 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit(event) {
-    console.log(event);
   }
 }
