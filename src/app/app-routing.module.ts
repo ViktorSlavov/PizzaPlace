@@ -10,39 +10,39 @@ export const routes: Routes = [
   { path: 'error', component: UncaughtErrorComponent },
   {
     path: 'home',
-    loadChildren: './screens/home/home.module#HomeModule'
+    loadChildren: () => import('./screens/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'about',
-    loadChildren: './screens/about/about.module#AboutModule'
+    loadChildren: () => import('./screens/about/about.module').then(m => m.AboutModule)
   },
   {
     path: 'stores',
-    loadChildren: './screens/stores/stores.module#StoresModule'
+    loadChildren: () => import('./screens/stores/stores.module').then(m => m.StoresModule)
   },
   {
     path: 'profile',
-    loadChildren: './screens/profile/profile.module#ProfileModule'
+    loadChildren: () => import('./screens/profile/profile.module').then(m => m.ProfileModule)
   },
   {
     path: 'tracker',
-    loadChildren: './screens/tracker/tracker.module#TrackerModule'
+    loadChildren: () => import('./screens/tracker/tracker.module').then(m => m.TrackerModule)
   },
   {
     path: 'mobile-app',
-    loadChildren: './screens/mobile-app/mobile-app.module#MobileAppModule'
+    loadChildren: () => import('./screens/mobile-app/mobile-app.module').then(m => m.MobileAppModule)
   },
   {
     path: 'careers',
-    loadChildren: './screens/careers/careers.module#CareersModule'
+    loadChildren: () => import('./screens/careers/careers.module').then(m => m.CareersModule)
   },
   {
     path: 'cart',
-    loadChildren: './screens/cart/cart.module#CartModule'
+    loadChildren: () => import('./screens/cart/cart.module').then(m => m.CartModule)
   },
   {
     path: 'menu',
-    loadChildren: './screens/menu/menu.module#MenuModule'
+    loadChildren: () => import('./screens/menu/menu.module').then(m => m.MenuModule)
   },
   { path: '**', component: PageNotFoundComponent } // must always be last
 ];
